@@ -108,13 +108,31 @@ class SingleLinkList(object):
             cur_node = next_node
 
 
+def merge_link_list(l1, l2):
+    # 创建虚拟头节点，origin_node这个引用指向Node(-1)这个节点，用来保存头节点
+    origin_node = Node(-1)
+    # 创建工作节点，也指向Node(-1)这个节点，后续用来迭代连接链表
+    work_node = origin_node
+    # 遍历l1、l2，将小的值接在work_node后面
+    while l1 and l2:
+        if l1.data < l2.data:
+            work_node.next, l1 = l1, l1.next
+        else:
+            work_node.next, l2 = l2, l2.next
+        work_node = work_node.next
+    work_node.next = l1 if l1 else l2
+    # origin_node的头节点是虚拟节点，所以输出它的下一个节点
+    return origin_node.next
+
+
 if __name__ == '__main__':
-    link_list = SingleLinkList()
-    for i in range(5):
-        link_list.append(i)
-    link_list.add(8)
-    link_list.insert(1, 7)
-    link_list.remove(3)
-    for i in link_list.items():
-        print(f"{i}--")
-    print(link_list.find(3))
+    link_list1 = SingleLinkList()
+    link_list2 = SingleLinkList()
+    for i in [1, 2, 4]:
+        link_list1.append(i)
+    for i in [1, 3, 4]:
+        link_list2.append(i)
+    result = merge_link_list(link_list1._head, link_list2._head)
+    while result:
+        print(result.data)
+        result = result.next
