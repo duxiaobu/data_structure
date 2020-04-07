@@ -98,7 +98,7 @@ class SingleLinkList(object):
         # 利用一个虚拟节点来承接倒序链表
         pre_link = None
         cur_node = head
-        while cur_node.next is not None:
+        while cur_node is not None:
             # 记录下一个节点，因为cur_node后面会被覆盖
             next_node = cur_node.next
             # 倒序节点
