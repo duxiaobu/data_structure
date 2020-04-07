@@ -79,8 +79,11 @@ class MaxHeap:
         left = 2 * index + 1
         right = 2 * index + 2
         largest = index
-        # 如果左孩子存在，并且大于根节点和右节点的值，则交换
-        if left < self._count and right < self._count and self._items[left] > self._items[largest] and self._items[
+        # 只有左孩子
+        if left < self._count <= right and self._items[left] > self._items[largest]:
+            largest = left
+        # 如果左、右孩子都存在
+        elif left < self._count and right < self._count and self._items[left] > self._items[largest] and self._items[
             left] > self._items[right]:
             largest = left
         elif right < self._count and self._items[right] > self._items[largest]:
@@ -143,8 +146,8 @@ class MinHeap:
             self._items[right], self._items[index] = self._items[index], self._items[right]
             self._sift_down(right)
         # 只有左子树
-        if left < self._count and \
-                right > self._count and \
+        elif left < self._count and \
+                right >= self._count and \
                 self._items[left] < self._items[index]:
             self._items[left], self._items[index] = self._items[index], self._items[left]
 
@@ -156,6 +159,7 @@ class TopK:
     """
     求给定列表的前k个最大元素
     """
+
     def __init__(self, list, k):
         self.min_heap = []
         self.num = k
@@ -190,32 +194,40 @@ def heap_sort(array):
 
 
 if __name__ == '__main__':
+    # 最大堆测试
     # mHeap = MaxHeap(5)
     # mHeap.add(100)
-    # mHeap.add(33)
     # mHeap.add(85)
+    # mHeap.add(33)
     # value = mHeap.extract()
     # print(f'value is {value}')
     # for i in mHeap._items:
     #     print(i)
-    # heap = MinHeap(10)
+
+    # 最小堆测试
+    # heap = MinHeap(5)
     # heap.add(33)
-    # heap.add(100)
     # heap.add(85)
+    # heap.add(100)
     # value = heap.extract()
     # print(f'value is {value}')
     # for i in heap._items:
     #     print(i)
-    # a = [3, 5, 2, 9, 6, 4]
+
+    a = [3, 5, 2, 9, 6, 4, 7]
     # print(heap_sort(a))
-    # heap = MaxHeap(10)
-    # for i in a:
-    #     heap.add(i)
-    # for j in heap._items:
-    #     print(j)
+    heap = MaxHeap(10)
+    for i in a:
+        heap.add(i)
+    for j in heap._items:
+        print(j)
+
     # TopK排序问题
-    import random
-    data = list(range(1000))
-    random.shuffle(data)
-    top = TopK(data, 5)
-    print(top.get_sort())
+    # import random
+    # import heapq
+    #
+    # data = list(range(1000))
+    # random.shuffle(data)
+    # print(heapq.nlargest(5, data))
+    # top = TopK(data, 5)
+    # print(top.get_sort())
