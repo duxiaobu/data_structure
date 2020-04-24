@@ -10,20 +10,19 @@ class Solution:
     def levelOrderBottom(self, root: TreeNode) -> [[int]]:
         result = []
         if root:
-            node_list = [[root]]
+            node_list = [root]
             while node_list:
-                node_array = node_list.pop(0)
-                result.append([x.val for x in node_array])
-                if node_array:
-                    tmp = []
-                    for node in node_array:
-                        tmp.extend([node.left, node.right])
-                    node_list.append(filter(None, tmp))
-        result.reverse()
-        return result
+                tmp = []
+                for _ in range(len(node_list)):
+                    node = node_list.pop(0)
+                    tmp.append(node.val)
+                    if node.left:
+                        node_list.append(node.left)
+                    if node.right:
+                        node_list.append(node.right)
+                result.append(tmp)
+        return result[::-1]
 
 
 if __name__ == '__main__':
-    a = [[3], [2], [1]]
-    a.reverse()
-    print(a)
+    pass
