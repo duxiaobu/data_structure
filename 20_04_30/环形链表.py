@@ -21,12 +21,13 @@ class Solution:
 
     def hasCycleQuick(self, head: ListNode) -> bool:
         # 使用双指针，一快一慢，快慢指针相遇就表示出现了环，如果快指针的next为None，表示这是一条单链表
-        if head is None or head.next is None or head.next.next is None:
+        if head is None or head.next is None:
             return False
-        quick_node = head.next.next
-        while quick_node.next:
-            if head == quick_node:
-                return True
-            head = head.next
-            quick_node = quick_node.next.next
-        return False
+        slow = head
+        fast = head.next
+        while slow != fast:
+            if fast is None or fast.next is None:
+                return False
+            slow = slow.next
+            fast = fast.next.next
+        return True
