@@ -30,7 +30,7 @@ class Solution:
 
 if __name__ == '__main__':
     s = Solution()
-    result = s.twoSum3([3, 3], 6)
+    result = s.twoSum3([2, 7, 11, 15], 9)
     print(result)
     # a = [3, 3]
     # print(a.index(3, 1))

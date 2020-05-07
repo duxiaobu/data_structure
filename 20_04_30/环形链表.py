@@ -31,3 +31,28 @@ class Solution:
             slow = slow.next
             fast = fast.next.next
         return True
+
+    def hasCycleDict2(self, head: ListNode) -> bool:
+        if head is None or head.next is None:
+            return False
+        cur_node = head
+        node_dict = {}
+        while cur_node:
+            if cur_node not in node_dict:
+                node_dict[cur_node] = 1
+                cur_node = cur_node.next
+            else:
+                return True
+        return False
+
+    def hasCycleQuick2(self, head: ListNode) -> bool:
+        if head is None or head.next is None:
+            return False
+        slow = head
+        fast = head.next
+        while slow != fast:
+            if fast is None or fast.next is None:
+                return False
+            slow = slow.next
+            fast = fast.next.next
+        return True
