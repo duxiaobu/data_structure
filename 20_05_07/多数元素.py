@@ -1,6 +1,3 @@
-from collections import Counter
-
-
 class Solution:
     def majorityElement(self, nums: [int]) -> int:
         # 字典保存
@@ -28,4 +25,4 @@ if __name__ == '__main__':
     s = Solution()
     data = [2, 2, 1, 3, 2, 1]
     print(s.majorityElement2(data))
-    # print(s.majorityElement(data))
+    print(s.majorityElement(data))
