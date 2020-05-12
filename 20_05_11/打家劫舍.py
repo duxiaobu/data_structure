@@ -5,6 +5,7 @@ class Solution:
 
 
 if __name__ == '__main__':
-    s = Solution()
-    data = [2, 7, 9, 3, 1]
-    print(s.rob(data))
+    s = (x * x for x in range(3))
+    a = [7, 8, 9]
+    a.extend(s)
+    print(a)
