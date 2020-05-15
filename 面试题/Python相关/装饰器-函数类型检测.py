@@ -23,9 +23,10 @@ def typeassert(*type_args, **type_kwargs):
     return wrap
 
 
-@typeassert(int, str)
+@typeassert(int, str, list)
 def say(x, y, z):
     print(x, y, z)
+
 
 
 if __name__ == '__main__':
