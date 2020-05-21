@@ -21,4 +21,4 @@ class Solution:
 
 if __name__ == '__main__':
     s = Solution()
-    print(s.missingNumber3([2, 0, 1]))
+    print(s.missingNumber2([2, 0, 1]))
