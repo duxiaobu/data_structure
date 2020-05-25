@@ -12,9 +12,19 @@ class Solution:
                 str_list[i] = "%20"
         return "".join(str_list)
 
+    def replaceSpaces2(self, S: str, length: int) -> str:
+        s_list = list(S)
+        for i in range(length):
+            if s_list[i] == " ":
+                s_list[i] = "%20"
+        print(s_list[: length])
+        return "".join(s_list[:length])
+
+    def replaceSpaces3(self, S: str, length: int) -> str:
+        return S[:length].replace(" ", "%20")
+
 
 if __name__ == '__main__':
     a = '    abc    '
-    print(a.rstrip())
     s = Solution()
-    print(s.replaceSpaces(a, 2))
+    print(s.replaceSpaces3(a, 8))
